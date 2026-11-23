@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2R1MB69T64"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2R1MB69T64');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Beyond requests.get(): How to Build Resilient Web Scrapers | Vasile Bratu</title>
+    <meta name="description" content="Learn how modern anti-bot systems like Cloudflare and Akamai block web scrapers, and discover stealth techniques (TLS fingerprinting, browser automation, proxies) to build resilient data pipelines.">
+    <meta name="author" content="Vasile Bratu">
+    <link rel="stylesheet" href="/index.css?v=1.2">
+    <link rel="canonical" href="https://vasiledev.com/articles/beyond-requests-get.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://vasiledev.com/articles/beyond-requests-get.html">
+    <meta property="og:title" content="Beyond requests.get(): How to Build Resilient Web Scrapers">
+    <meta property="og:description" content="Learn how modern anti-bot systems like Cloudflare and Akamai block web scrapers, and discover stealth techniques (TLS fingerprinting, browser automation, proxies) to build resilient data pipelines.">
+    <meta property="og:image" content="https://vasiledev.com/b2b_leads_dashboard.webp">
+
+    <!-- SEO JSON-LD Structured Data Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Beyond requests.get(): How to Build Resilient Web Scrapers in the Age of Cloudflare & Akamai",
+      "image": "https://vasiledev.com/b2b_leads_dashboard.webp",
+      "author": {
+        "@type": "Person",
+        "name": "Vasile Bratu",
+        "url": "https://www.linkedin.com/in/vasiledev/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VasileDev",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://vasiledev.com/favicon.svg"
+        }
+      },
+      "datePublished": "2026-06-07",
+      "description": "Learn how modern anti-bot systems like Cloudflare and Akamai block web scrapers, and discover stealth techniques (TLS fingerprinting, browser automation, proxies) to build resilient data pipelines."
+    }
+    </script>
+
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "VasileDev Group", "item": "https://vasiledev.com/"}, {"@type": "ListItem", "position": 2, "name": "Beyond requests.get(): How to Build Resilient Web Scrapers", "item": "https://vasiledev.com/articles/beyond-requests-get.html"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What enterprise infrastructure is documented on Beyond requests.get(): How to Build Resilient Web Scrapers?", "acceptedAnswer": {"@type": "Answer", "text": "Beyond requests.get(): How to Build Resilient Web Scrapers documents VasileDev Group (EU VIES IT04226190041) production Cloudflare Edge Workers, D1 SQLite multi-tenant databases, and pan-European programmatic SEO architectures across 15+ EU jurisdictions."}}, {"@type": "Question", "name": "How does VasileDev Group enforce Tiered Indexing & Crawl Budget efficiency?", "acceptedAnswer": {"@type": "Answer", "text": "Every portal enforces strict HTTP 404 with noindex, nofollow on non-existent slugs, query-parameter protection (noindex, follow), and 3-Tier Sitemap Pruning with SSR mathematical differentiation."}}]}]}</script>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo"><span class="terminal-pulse-icon"><i class="fa-solid fa-terminal"></i></span> <span class="git-prefix">git commit --amend</span> <span class="git-target"><span class="git-quote">"</span>Vasile<span>Dev</span><span class="git-quote">"</span></span></a>
+            <ul class="nav-links">
+                <li><a href="/#capabilities">Capabilities</a></li>
+                <li><a href="/#projects">Elite Projects</a></li>
+                <li><a href="/#articles">Articles & Guides</a></li>
+                <li><a href="/#contact">Contact</a></li>
+                <li class="lang-switcher">
+                    <a href="/" class="lang-link active-lang">EN</a> | 
+                    <a href="/ro/" class="lang-link">RO</a> | 
+                    <a href="/it/" class="lang-link">IT</a>
+                </li>
+            </ul>
+            <button class="hamburger-menu" aria-label="Toggle Menu" id="hamburger-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Article Content Container -->
+    <main class="article-container" style="max-width: 800px; margin: 8rem auto 6rem auto; padding: 0 2rem;">
+        <article>
+            <span class="article-meta" style="color: var(--primary); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.08em; display: block; margin-bottom: 1rem;">Technical Guide & Case Study</span>
+            <h1 style="font-size: 2.5rem; line-height: 1.25; margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--text-white) 30%, #a1aab8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Outfit', sans-serif;">Beyond requests.get(): How to Build Resilient Web Scrapers in the Age of Cloudflare & Akamai</h1>
+            
+            <!-- Author Card -->
+            <div class="author-box" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                <img src="/vasile-bratu-software-engineer.jpg" alt="Vasile Bratu — Senior Full-Stack Python & AI Engineer, Founder of VasileDev" width="48" height="48" style="border-radius: 50%; border: 2px solid var(--primary); object-fit: cover; box-shadow: 0 0 10px rgba(229,184,66,0.3);">
+                <div>
+                    <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; color: var(--text-white);">Vasile Bratu</p>
+                    <p style="color: var(--text-muted); font-size: 0.8rem;">Premium Data Automation & Web Scraping Architect</p>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="article-content" style="font-size: 1.05rem; line-height: 1.8; color: var(--text-muted);">
+                <p style="margin-bottom: 1.5rem;">If you’ve built or managed web scrapers recently, you already know the painful truth: the days of writing a simple Python script using <code style="background: #0f131a; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.9rem; color: var(--primary);">requests.get()</code> and calling it a day are long gone.</p> 
+
+                <p style="margin-bottom: 1.5rem;">Today, almost every high-value data source is shielded by sophisticated Web Application Firewalls (WAFs) and anti-bot systems like <strong>Cloudflare (Turnstile/Under Attack Mode), Akamai, DataDome, or PerimeterX</strong>. These systems don't just block scrapers; they silently study connections, analyze fingerprints, and flag automated behavior before a single byte of HTML is even returned.</p>
+
+                <p style="margin-bottom: 2rem;">As a Web Scraping Architect, I see many businesses struggling with constantly breaking pipelines. Here is a look at what modern anti-bot systems look for, and how we build resilient scraping pipelines to bypass them cleanly and ethically.</p>
+
+                <h2 style="font-size: 1.6rem; margin: 2.5rem 0 1rem 0; color: var(--text-white); font-family: 'Outfit', sans-serif;">1. The Anti-Bot Detection Arsenal: What Are We Up Against?</h2>
+                <p style="margin-bottom: 1.2rem;">Modern anti-bots do not just look at your User-Agent header. They analyze incoming requests across multiple layers of the networking stack:</p>
+
+                <ul style="margin: 0 0 2rem 1.5rem; padding-left: 0;">
+                    <li style="margin-bottom: 0.8rem; list-style-type: disc;"><strong>TLS Fingerprinting (JA3/JA4):</strong> Every HTTP client (like Python’s standard <code style="background: #0f131a; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.9rem;">requests</code>, <code style="background: #0f131a; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.9rem;">aiohttp</code>, or standard <code style="background: #0f131a; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.9rem;">curl</code>) establishes a TLS handshake in a unique way. Cloudflare and Akamai keep database records of these handshakes. If your User-Agent says "Chrome" but your TLS handshake looks like Python, you are instantly blocked.</li>
+                    <li style="margin-bottom: 0.8rem; list-style-type: disc;"><strong>HTTP/2 Fingerprinting:</strong> The way your client negotiates HTTP/2 frames, settings, and window updates reveals its identity. Bots and scrapers negotiate these frames differently than standard consumer browsers.</li>
+                    <li style="margin-bottom: 0.8rem; list-style-type: disc;"><strong>IP Reputation:</strong> Standard datacenter IPs (like AWS, DigitalOcean, or Hetzner) are blacklisted by default on many protected enterprise websites.</li>
+                    <li style="margin-bottom: 0.8rem; list-style-type: disc;"><strong>Behavioral Analysis & Canvas Fingerprinting:</strong> When using headless browsers, anti-bots check for telltale signs of automation (like <code style="background: #0f131a; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.9rem;">navigator.webdriver = true</code> or inconsistencies in font rendering and screen resolution).</li>
+                </ul>
+
+                <h2 style="font-size: 1.6rem; margin: 2.5rem 0 1rem 0; color: var(--text-white); font-family: 'Outfit', sans-serif;">2. Tactics for Building Resilient Scraping Pipelines</h2>
+                <p style="margin-bottom: 1.5rem;">To build scrapers that actually last and scale, we must mimic legitimate web browsers at every layer of the stack:</p>
+
+                <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.8rem 0; color: var(--text-white); font-family: 'Outfit', sans-serif;">A. TLS Spoofing (The Lightweight Solution)</h3>
+                <p style="margin-bottom: 1.2rem;">Instead of launching heavy browsers for every task, we can spoof the TLS handshake. Tools like <code style="background: #0f131a; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.9rem; color: var(--primary);">curl_cffi</code> or HTTP clients with custom TLS/JA3 configurations allow us to make Python requests look exactly like Chrome or Firefox at the network handshake level. This is fast, low-resource, and bypasses many basic WAF blocks.</p>
+
+                <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.8rem 0; color: var(--text-white); font-family: 'Outfit', sans-serif;">B. Stealth Browser Automation</h3>
+                <p style="margin-bottom: 1.2rem;">When APIs are closed and JavaScript execution is mandatory, tools like Playwright or Puppeteer must be paired with stealth patches (like <code style="background: #0f131a; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.9rem;">playwright-stealth</code> or customized browser launches). This strips out automation flags, patches inconsistent APIs, and makes the automated browser look like a regular desktop user.</p>
+
+                <h3 style="font-size: 1.25rem; margin: 1.5rem 0 0.8rem 0; color: var(--text-white); font-family: 'Outfit', sans-serif;">C. Smart Proxy Infrastructure</h3>
+                <p style="margin-bottom: 1.2rem;">Relying on cheap proxy lists is a recipe for failure. A resilient setup uses:</p>
+                <ul style="margin: 0 0 2rem 1.5rem; padding-left: 0;">
+                    <li style="margin-bottom: 0.5rem; list-style-type: disc;"><strong>Residential Proxies:</strong> IPs assigned to real households, which carry the highest trust scores.</li>
+                    <li style="margin-bottom: 0.5rem; list-style-type: disc;"><strong>Mobile (4G/5G) Proxies:</strong> Invaluable for highly sensitive targets, as thousands of legitimate users share these IPs, making WAFs extremely hesitant to block them.</li>
+                    <li style="margin-bottom: 0.5rem; list-style-type: disc;"><strong>Smart Rotation & Session Management:</strong> Keeping sessions consistent when logging in, but rotating IPs dynamically to prevent rate-limiting.</li>
+                </ul>
+
+                <h2 style="font-size: 1.6rem; margin: 2.5rem 0 1rem 0; color: var(--text-white); font-family: 'Outfit', sans-serif;">3. The Bottom Line: It’s a Business Strategy, Not Just Code</h2>
+                <p style="margin-bottom: 1.5rem;">Web scraping is a continuous cat-and-mouse game. Sites update their anti-bot rules, and scraper configurations must adapt. </p>
+
+                <p style="margin-bottom: 2rem;">For businesses relying on external data, the key to success isn't finding a "magic script" that works forever—it’s building a <strong>resilient, modular pipeline</strong> where proxy rotation, TLS spoofing, and headless browser configs can be adjusted on the fly without breaking the entire flow.</p>
+
+                <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; text-align: center; margin-top: 3rem;">
+                    <h4 style="font-size: 1.2rem; color: var(--primary); margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">Need an unbreakable data collection pipeline?</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem;">Let’s connect and build a custom, resilient data engine tailored to your business needs.</p>
+                    <a href="/#contact" class="btn btn-primary">Get in Touch 📨</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- UNIFIED VASILEDEV ECOSYSTEM FOOTER -->
+        <footer class="vasiledev-ecosystem-footer" style="background: #03060a; border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 50px 20px 24px; font-family: 'Inter', system-ui, -apple-system, sans-serif; color: #94a3b8; font-size: 0.85rem; line-height: 1.6; text-align: left; margin-top: 60px;">
+        <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; margin-bottom: 36px;">
+            <div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                    <span style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; font-size: 16px;">
+                        👑
+                    </span>
+                    <span style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; color: #ffffff; letter-spacing: -0.3px;">
+                        VASILE<strong style="color: #38bdf8;">DEV</strong>
+                    </span>
+                </div>
+                <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin: 0 0 12px 0;">
+                    European AI Cybersecurity, RegTech, Consumer Protection &amp; State Subsidies Intelligence Ecosystem. Building high-precision public utility platforms across the EU.
+                </p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
+                    <span style="background: rgba(16, 185, 129, 0.12); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px;">✔️ VIES Verified EU</span>
+                    <span style="background: rgba(56, 189, 248, 0.12); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px;">🛡️ 100% Free Public Utility</span>
+                </div>
+                <p style="margin: 0 0 6px 0; color: #cbd5e1; font-size: 0.82rem;">VAT / P.IVA: <code style="background: rgba(255, 255, 255, 0.1); color: #38bdf8; padding: 2px 6px; border-radius: 4px; font-family: monospace;">IT04226190041</code></p>
+                <p style="margin: 0 0 6px 0; color: #94a3b8; font-size: 0.82rem;">Headquarters: 12075 Garessio (CN), Piemonte, Italy</p>
+                <p style="margin: 0 0 6px 0; color: #94a3b8; font-size: 0.82rem;">Direct: <a href="mailto:amendamax@vasiledev.com" style="color: #cbd5e1; text-decoration: none;">amendamax@vasiledev.com</a> &bull; <strong style="color: #cbd5e1;">+39 320 948 1876</strong></p>
+            </div>
+
+            <div>
+                <h4 style="font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; color: #38bdf8; margin: 0 0 14px 0;">RegTech &amp; Consumer Radars</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; font-size: 0.83rem;">
+                    <a href="https://isbrokersafe.com" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🏛️</span><span>IsBrokerSafe.com</span></a>
+                    <a href="https://verifydating.net" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🛡️</span><span>VerifyDating.net</span></a>
+                    <a href="https://jobscamradar.com" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>💼</span><span>JobScamRadar.com</span></a>
+                    <a href="https://pillscamradar.com" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>💊</span><span>PillScamRadar.com</span></a>
+                    <a href="https://appscamradar.com" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>📱</span><span>AppScamRadar.com</span></a>
+                    <a href="https://dreamcarhunt.com" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🏎️</span><span>DreamCarHunt.com</span></a>
+                    <a href="https://airparkrefund.com" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>✈️</span><span>AirParkRefund.com</span></a>
+                    <a href="https://vasiledev.com" style="color: #38bdf8; font-weight: 700; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>👑</span><span>VasileDev.com</span></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; color: #fbbf24; margin: 0 0 14px 0;">EU Subsidies &amp; Grants Network (16 Countries) &amp; BPS™ Cloud</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 7px 14px; font-size: 0.82rem;">
+                    <a href="https://calcolaincentivi.it" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇮🇹</span><span>CalcolaIncentivi.it</span></a>
+                    <a href="https://calculeazasubventii.ro" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇷🇴</span><span>CalculeazaSubventii.ro</span></a>
+                    <a href="https://foerderungberechnen.de" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇩🇪</span><span>FoerderungBerechnen.de</span></a>
+                    <a href="https://foerderungberechnen.at" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇦🇹</span><span>FoerderungBerechnen.at</span></a>
+                    <a href="https://calculesubventions.fr" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇫🇷</span><span>CalculeSubventions.fr</span></a>
+                    <a href="https://calculasubvenciones.es" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇪🇸</span><span>CalculaSubvenciones.es</span></a>
+                    <a href="https://obliczdotacje.pl" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇵🇱</span><span>ObliczDotacje.pl</span></a>
+                    <a href="https://berekensubsidie.nl" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇳🇱</span><span>BerekenSubsidie.nl</span></a>
+                    <a href="https://premieberekenen.be" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇧🇪</span><span>PremieBerekenen.be</span></a>
+                    <a href="https://spocitejdotaci.cz" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇨🇿</span><span>SpocitejDotaci.cz</span></a>
+                    <a href="https://calculaincentivos.pt" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇵🇹</span><span>CalculaIncentivos.pt</span></a>
+                    <a href="https://beregnstotte.dk" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇩🇰</span><span>BeregnStotte.dk</span></a>
+                    <a href="https://bidragskalkylator.se" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇸🇪</span><span>BidragsKalkylator.se</span></a>
+                    <a href="https://palyazatkalkulator.hu" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇭🇺</span><span>PalyazatKalkulator.hu</span></a>
+                    <a href="https://ukgrantcalculator.co.uk" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇬🇧</span><span>UKGrantCalculator.co.uk</span></a>
+                    <a href="https://calculesubventions.fr/lu" target="_blank" rel="noopener" style="color: #cbd5e1; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>🇱🇺</span><span>CalculeSubventions.fr/lu</span></a>
+                    <a href="https://ukgrantcalculator.co.uk/bps-cloud" target="_blank" rel="noopener" style="color: #38bdf8; font-weight: 700; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;"><span>⚡</span><span>BPS™ Cloud Autopilot</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div style="max-width: 1240px; margin: 0 auto; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 20px; text-align: center; font-size: 0.8rem; color: #64748b;">
+            <p style="margin: 0;">&copy; 2026 VasileDev™ by VasileDev Group (P.IVA IT04226190041). All Rights Reserved. Intellectual Property Protected under EU Copyright Law.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Mobile Menu Toggle
+            const hamburgerBtn = document.getElementById("hamburger-btn");
+            const navLinks = document.querySelector(".nav-links");
+            
+            if (hamburgerBtn && navLinks) {
+                hamburgerBtn.addEventListener("click", function() {
+                    hamburgerBtn.classList.toggle("active");
+                    navLinks.classList.toggle("active");
+                });
+            }
+        });
+    </script>
+</body>
+</html>

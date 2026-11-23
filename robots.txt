@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+Allow: /vasile-bratu.jpg
+Allow: /images/vasile-bratu.jpg
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /vasile-bratu.jpg
+Allow: /images/vasile-bratu.jpg
+
+# Disallow crawling of raw PDF and Excel report files to prevent non-indexed asset warnings
+Disallow: /amazon_scraper/*.xlsx$
+Disallow: /amazon_scraper/*.pdf$
+Disallow: /bookstore_scraper/*.xlsx$
+Disallow: /bookstore_scraper/*.pdf$
+Disallow: /lead_generator/*.xlsx$
+Disallow: /lead_generator/*.pdf$
+
+# Disallow dynamic query parameters
+Disallow: /*?q=*
+Disallow: /*?city=*
+Disallow: /*?comune=*
+Disallow: /*?mode=*
+Disallow: /*?broker=*
+Disallow: /*?domain=*
+Disallow: /*?installer=*
+Disallow: /*?search=*
+
+Sitemap: https://vasiledev.com/sitemap.xml
